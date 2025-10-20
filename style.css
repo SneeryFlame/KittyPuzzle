@@ -1,0 +1,76 @@
+ body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f3aacb;
+    font-family: Arial, sans-serif;
+  }
+
+  #timer {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .puzzle {
+    width: 330px;
+    height: 330px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    border: 2px solid #333;
+    border-radius: 10px;
+  }
+
+  .piece {
+    width: 100%;
+    height: 110px;
+    background-image: url('Assets/Mary.jpeg');
+    background-size: 330px 330px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: grab;
+    user-select: none;
+  }
+
+  /* Parte da imagem que cada peça exibe */
+  .p1 { background-position: 0 0; }
+  .p2 { background-position: -110px 0; }
+  .p3 { background-position: -220px 0; }
+  .p4 { background-position: 0 -110px; }
+  .p5 { background-position: -110px -110px; }
+  .p6 { background-position: -220px -110px; }
+  .p7 { background-position: 0 -220px; }
+  .p8 { background-position: -110px -220px; }
+  .p9 { background-position: -220px -220px; }
+
+  /* Efeito ao arrastar */
+  .dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+
+  /* Mensagem de vitória */
+  #message {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+  }
+
+   button:hover {
+      background-color: #FFC0CB;
+    }
+
+     button {
+      background-color: #d458a6;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }

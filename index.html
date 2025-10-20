@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quebra-cabeça com tempo e vitória</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+<body>
+    
+    <div id="timer">Tempo: 0s</div>
+    
+    <div class="puzzle" id="puzzle">
+        <!-- Peças embaralhadas inicialmente -->
+        <div class="piece p5" draggable="true" data-pos="5"></div>
+        <div class="piece p2" draggable="true" data-pos="2"></div>
+        <div class="piece p9" draggable="true" data-pos="9"></div>
+        
+        <div class="piece p1" draggable="true" data-pos="1"></div>
+        <div class="piece p8" draggable="true" data-pos="8"></div>
+  <div class="piece p3" draggable="true" data-pos="3"></div>
+  
+  <div class="piece p7" draggable="true" data-pos="7"></div>
+  <div class="piece p4" draggable="true" data-pos="4"></div>
+  <div class="piece p6" draggable="true" data-pos="6"></div>
+</div>
+
+<div id="message"></div>
+
+<script>
+  const puzzle = document.getElementById('puzzle');
+  const timerDisplay = document.getElementById('timer');
+  const message = document.getElementById('message');
+  
+  let dragged = null;
+  let time = 0;
+  let timerInterval;
+  
+  // Começa o timer
+  function startTimer() {
+    timerInterval = setInterval(() => {
+        time++;
+      timerDisplay.textContent = `Tempo: ${time}s`;
+    }, 1000);
+  }
+
+  // Para o timer
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+  
+  // Verifica se o puzzle está na ordem correta
+  function checkWin() {
+    const pieces = puzzle.children;
+    for (let i = 0; i < pieces.length; i++) {
+        if (pieces[i].getAttribute('data-pos') != (i + 1)) {
+        return false;
+    }
+    }
+    return true;
+  }
+
+  // Troca dois elementos DOM de posição
+  function swapElements(el1, el2) {
+      const parent = el1.parentNode;
+      const sibling1 = el1.nextSibling === el2 ? el1 : el1.nextSibling;
+      parent.insertBefore(el1, el2);
+      parent.insertBefore(el2, sibling1);
+  }
+  
+  puzzle.addEventListener('dragstart', e => {
+      if (e.target.classList.contains('piece')) {
+      dragged = e.target;
+      e.target.classList.add('dragging');
+    }
+  });
+
+  puzzle.addEventListener('dragend', e => {
+    if (e.target.classList.contains('piece')) {
+      e.target.classList.remove('dragging');
+      dragged = null;
+    }
+});
+
+  puzzle.addEventListener('dragover', e => {
+    e.preventDefault();
+  });
+  
+  puzzle.addEventListener('drop', e => {
+      e.preventDefault();
+      const target = e.target;
+      if (target && target !== dragged && target.classList.contains('piece')) {
+          // Troca as posições dos elementos
+      swapElements(dragged, target);
+
+      // Verifica vitória após trocar
+      if (checkWin()) {
+        stopTimer();
+        message.textContent = `Parabéns! Você montou o quebra-cabeça em ${time} segundos! 🎉`;
+      }
+    }
+  });
+  
+  window.onload = () => {
+    startTimer();
+};
+</script>
+
+
+
+
+</body>
+</html>
