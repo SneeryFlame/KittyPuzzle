@@ -33,6 +33,9 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     cursor: grab;
     user-select: none;
+      position: relative;
+  touch-action: none; /* impede o navegador de rolar a tela ao arrastar */
+
   }
 
   /* Parte da imagem que cada peça exibe */
@@ -46,9 +49,7 @@
   .p8 { background-position: -110px -220px; }
   .p9 { background-position: -220px -220px; }
 
-   position: relative;
-  touch-action: none; /* impede o navegador de rolar a tela ao arrastar */
-
+ 
   /* Efeito ao arrastar */
   .dragging {
     opacity: 0.5;
