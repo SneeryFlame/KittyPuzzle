@@ -25,15 +25,15 @@
   }
 
   .piece {
-    width: 110px;
-    height: 110px;
-    background-image: url('Assets/Mary.jpeg');
-    background-size: 330px 330px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    cursor: grab;
-    user-select: none;
-      position: relative;
+  width: 110px;
+  height: 110px;
+  background-image: url('Assets/Mary.jpeg');
+  background-size: 330px 330px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  cursor: grab;
+  user-select: none;
+  position: relative;
   touch-action: none; /* impede o navegador de rolar a tela ao arrastar */
 
   }
@@ -92,10 +92,27 @@
 .tamanho {
   width: 33.33%; /* cada peça ocupa 1/3 da linha */
   height: auto;
+  aspect-ratio: 1 / 1;  /* mantém o formato quadrado */
+  object-fit: cover;
 }
 
 @media (max-width: 600px) {
   .quebra {
     width: 95vw;
   }
+}
+
+#puzzle-container {
+  position: relative;
+  width: 90vw;          /* ajusta ao tamanho da tela */
+  max-width: 400px;     /* limite em telas grandes */
+  height: auto;
+  margin: 0 auto;       /* centraliza */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;     /* impede as peças de sair da caixa */
+  background-color: #f9cadd; /* só pra ver a área do puzzle */
+  border-radius: 10px;
 }
