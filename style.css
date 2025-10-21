@@ -80,3 +80,22 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
+    .quebra {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw; /* usa 90% da largura da tela */
+  max-width: 400px; /* evita que fique grande demais em telas grandes */
+  margin: 0 auto;
+}
+
+.tamanho {
+  width: 33.33%; /* cada peça ocupa 1/3 da linha */
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .quebra {
+    width: 95vw;
+  }
+}
