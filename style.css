@@ -25,7 +25,7 @@
   }
 
   .piece {
-    width: 100%;
+    width: 110px;
     height: 110px;
     background-image: url('Assets/Mary.jpeg');
     background-size: 330px 330px;
@@ -42,9 +42,11 @@
   .p1 { background-position: 0 0; }
   .p2 { background-position: -110px 0; }
   .p3 { background-position: -220px 0; }
+
   .p4 { background-position: 0 -110px; }
   .p5 { background-position: -110px -110px; }
   .p6 { background-position: -220px -110px; }
+
   .p7 { background-position: 0 -220px; }
   .p8 { background-position: -110px -220px; }
   .p9 { background-position: -220px -220px; }
