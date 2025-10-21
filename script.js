@@ -21,6 +21,8 @@ pieces.forEach(piece => {
 
   piece.addEventListener('touchmove', (e) => {
     if (!draggingPiece) return;
+     e.preventDefault(); // <---- adiciona isso
+     
     const touch = e.touches[0];
     draggingPiece.style.position = 'absolute';
     draggingPiece.style.left = `${touch.pageX - draggingPiece.offsetWidth / 2}px`;
